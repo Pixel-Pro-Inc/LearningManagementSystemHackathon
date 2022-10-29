@@ -1,15 +1,43 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { AccountService } from 'src/app/_services/account.service';
+import { SharedService } from 'src/app/_services/shared.service';
 
 @Component({
   selector: 'app-teacher-dashboard',
   templateUrl: './teacher-dashboard.component.html',
-  styleUrls: ['./teacher-dashboard.component.css']
+  styleUrls: ['./teacher-dashboard.component.css'],
 })
 export class TeacherDashboardComponent implements OnInit {
+  messageForm: FormGroup;
+  userSearchForm: FormGroup;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder,
+    private accountService: AccountService,
+    public shared: SharedService
+  ) {}
 
-  ngOnInit(): void {
+  initializeForm() {
+    this.messageForm = this.fb.group({
+      content: ['', []],
+    });
+
+    this.userSearchForm = this.fb.group({
+      username: ['', []],
+    });
   }
 
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  sidebarToggle() {
+    let sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('open');
+  }
+
+  sendMessage() {}
+
+  searchUser() {}
 }

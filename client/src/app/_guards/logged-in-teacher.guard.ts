@@ -22,7 +22,7 @@ export class LoggedInTeacherGuard implements CanActivate {
       return false;
     }
 
-    if (user.accountType != 'Student') {
+    if (user.accountType == this.shared.AccountTypes.Teacher) {
       return true;
     }
 

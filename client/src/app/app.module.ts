@@ -32,6 +32,7 @@ import { CourseComponent } from './components/course/course.component';
 import { FilePreviewComponent } from './components/file-preview/file-preview.component';
 import { AssignmentComponent } from './components/assignment/assignment.component';
 import { AssessmentComponent } from './components/assessment/assessment.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AssessmentComponent } from './components/assessment/assessment.componen
     FilePreviewComponent,
     AssignmentComponent,
     AssessmentComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

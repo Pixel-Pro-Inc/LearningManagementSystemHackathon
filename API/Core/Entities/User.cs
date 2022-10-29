@@ -16,7 +16,7 @@ namespace API.Core.Entities
         public string NationalIdentityNumber { get; set; }
         public string Nationality { get; set; }
         public List<string> Languages { get; set; }
-        public string StudentId { get; set; }
+        public string OrganizationId { get; set; }
         public string Email { get; set; }
 
         //Account Information
@@ -24,6 +24,10 @@ namespace API.Core.Entities
         public byte[] PasswordSalt { get; set; }
         public string AccountType { get; set; }
         public bool Disabled { get; set; } = false;
+
+        //Hierarchy Related Information
+        public string Level { get; set; }
+        public DateTime ProcessionDate { get; set; }
 
         public string GetFullName()
         {
