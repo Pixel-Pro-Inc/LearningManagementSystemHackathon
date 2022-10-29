@@ -15,14 +15,53 @@
   <div class="navbar-collapse collapse" id="navbarCollapse">
     <!--Navigation Links & Avatar Here-->
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active">Announcements</a>
+      <li *ngIf="isTeacher()" class="nav-item">
+        <a
+          class="nav-link"
+          href="/teacher-dashboard#Announcements"
+          routerLinkActive="active"
+          >Announcements</a
+        >
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active">My Courses</a>
+      <li *ngIf="isTeacher()" class="nav-item">
+        <a
+          class="nav-link"
+          href="/teacher-dashboard#MyCourses"
+          routerLinkActive="active"
+          >My Courses</a
+        >
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active">Calendar</a>
+      <li *ngIf="isTeacher()" class="nav-item">
+        <a
+          class="nav-link"
+          href="/teacher-dashboard#Calendar"
+          routerLinkActive="active"
+          >Calendar</a
+        >
+      </li>
+      <li *ngIf="!isTeacher()" class="nav-item">
+        <a
+          class="nav-link"
+          href="/student-dashboard#Announcements"
+          routerLinkActive="active"
+          >Announcements</a
+        >
+      </li>
+      <li *ngIf="!isTeacher()" class="nav-item">
+        <a
+          class="nav-link"
+          href="/student-dashboard#MyCourses"
+          routerLinkActive="active"
+          >My Courses</a
+        >
+      </li>
+      <li *ngIf="!isTeacher()" class="nav-item">
+        <a
+          class="nav-link"
+          href="/student-dashboard#Calendar"
+          routerLinkActive="active"
+          >Calendar</a
+        >
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" routerLink="/myoffice"
@@ -33,6 +72,37 @@
         <a class="nav-link" routerLinkActive="active" routerLink="/mydrive"
           >My Drive</a
         >
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="dropdown03"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          ><img
+            src="data:image/jpeg;base64,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"
+            alt="Avatar"
+            class="avatar-img"
+        /></a>
+        <ul class="dropdown-content" aria-labelledby="dropdown03">
+          <li>
+            <a class="nav-link" routerLinkActive="active" routerLink="/profile"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <a class="nav-link out" (click)="signOut()">
+              <svg class="icon" viewBox="0 0 256 256">
+                <path
+                  d="M224.48633,136.48438l-41.98926,42a12.0001,12.0001,0,0,1-16.97266-16.96876L187.03467,140H104a12,12,0,0,1,0-24h83.03467L165.52441,94.48438a12.0001,12.0001,0,0,1,16.97266-16.96876l41.98926,42A12.00094,12.00094,0,0,1,224.48633,136.48438ZM104,204H52V52h52a12,12,0,0,0,0-24H48A20.02229,20.02229,0,0,0,28,48V208a20.02229,20.02229,0,0,0,20,20h56a12,12,0,0,0,0-24Z"
+                />
+              </svg>
+              Sign out</a
+            >
+          </li>
+        </ul>
       </li>
     </ul>
   </div>

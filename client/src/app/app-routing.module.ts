@@ -6,6 +6,7 @@ import { CourseComponent } from './components/course/course.component';
 import { DriveComponent } from './components/drive/drive.component';
 import { LoginComponent } from './components/login/login.component';
 import { OfficeComponent } from './components/office/office.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component';
 import { TeacherDashboardComponent } from './components/teacher-dashboard/teacher-dashboard.component';
 import { LoggedInStudentGuard } from './_guards/logged-in-student.guard';
@@ -25,9 +26,22 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'myoffice', component: OfficeComponent },
   { path: 'mydrive', component: DriveComponent },
-  { path: 'course', component: CourseComponent },
-  { path: 'assignment', component: AssignmentComponent },
-  { path: 'assessment', component: AssessmentComponent },
+  { path: 'profile', component: ProfileComponent },
+  {
+    path: 'course',
+    component: CourseComponent,
+    canActivate: [LoggedInStudentGuard],
+  },
+  {
+    path: 'assignment',
+    component: AssignmentComponent,
+    canActivate: [LoggedInStudentGuard],
+  },
+  {
+    path: 'assessment',
+    component: AssessmentComponent,
+    canActivate: [LoggedInStudentGuard],
+  },
 ];
 
 @NgModule({

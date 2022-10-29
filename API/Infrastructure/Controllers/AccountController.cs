@@ -32,7 +32,7 @@ namespace API.Infrastructure.Controllers
                 FirstNames = signUpDto.FirstNames,
                 LastName = signUpDto.LastName,
                 Email = signUpDto.Email,
-                StudentId = signUpDto.StudentId,
+                OrganizationId = signUpDto.StudentId,
                 AccountType = signUpDto.AccountType,
                 DateOfBirth = signUpDto.DateOfBirth,
                 Languages = signUpDto.Languages,
@@ -46,7 +46,7 @@ namespace API.Infrastructure.Controllers
             await _firebaseService.StoreData<User>("Account", appUser);
 
             return new UserDto() {
-                StudentId = appUser.StudentId,
+                StudentId = appUser.OrganizationId,
                 Email = appUser.Email,
                 AccountType = appUser.AccountType,
                 Disabled = appUser.Disabled,
@@ -78,7 +78,7 @@ namespace API.Infrastructure.Controllers
             return new UserDto()
             {
                 Email = appUser.Email,
-                StudentId = appUser.StudentId,
+                StudentId = appUser.OrganizationId,
                 AccountType = appUser.AccountType,
                 Disabled = appUser.Disabled,
                 FirstNames = appUser.FirstNames,
@@ -101,7 +101,7 @@ namespace API.Infrastructure.Controllers
                 userDtos.Add(new UserDto()
                 {
                     Email = appUser.Email,
-                    StudentId = appUser.StudentId,
+                    StudentId = appUser.OrganizationId,
                     AccountType = appUser.AccountType,
                     Disabled = appUser.Disabled,
                     FirstNames = appUser.FirstNames,

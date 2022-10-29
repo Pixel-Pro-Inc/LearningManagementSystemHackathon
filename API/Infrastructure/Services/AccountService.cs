@@ -12,14 +12,20 @@ namespace API.Infrastructure.Services
             _firebaseService = firebaseService;
         }
 
-        public async Task<User> GetUser(string studentId)
+        public async Task<User> GetUser(string organizationId)
         {
             var collection = await _firebaseService.GetData<User>("Account");
 
             object user = null;
 
             if (collection != null && collection.Count != 0)
-                 user = collection.Where(u => u.StudentId == studentId).ToList()[0];
+            {
+                var result = collection.Where(u => u.OrganizationId == organizationId).ToList();
+
+                if (result.Count > 0)
+                    user = result[0];
+            }
+                 
 
             return user == null? null: (User)user;
         }

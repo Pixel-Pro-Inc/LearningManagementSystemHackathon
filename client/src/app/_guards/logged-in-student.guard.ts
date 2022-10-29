@@ -22,10 +22,11 @@ export class LoggedInStudentGuard implements CanActivate {
       return false;
     }
 
-    if (user.accountType == 'Student') {
+    if (user.accountType == this.shared.AccountTypes.Student) {
       return true;
     }
 
+    this.shared.router.navigateByUrl('/');
     return false;
   }
 }
