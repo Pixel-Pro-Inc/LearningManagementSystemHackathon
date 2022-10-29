@@ -1,0 +1,98 @@
+header {
+  margin-bottom: 56px;
+}
+
+article {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.article-title {
+  margin-top: 5rem;
+  color: #444;
+}
+
+.files {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.file {
+  display: flex;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid var(--light-gray);
+  background-color: transparent;
+  margin: 0.15rem 0.15rem;
+  width: 350px;
+  margin-bottom: 2rem;
+}
+.drive-icon {
+  fill: #444;
+  width: 40px;
+  width: 40px;
+}
+
+.drive-name-text {
+  margin: 0;
+  font-weight: bold;
+  margin: auto 0;
+  margin-left: 0.35rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drive-rule {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.drive-header-title {
+  margin: 0;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  font-size: 1.4rem;
+}
+
+.file-button {
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  margin: 0 0.1rem;
+}
+
+.file-button:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+.file-button-icon {
+  fill: #444;
+  width: 30px;
+  height: 30px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  text-decoration: underline;
+  color: #444;
+}
+
+p {
+  color: #444;
+}
+
+.disclaimer {
+  color: #444;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.8rem;
+}
+
+form {
+  width: 50%;
+}

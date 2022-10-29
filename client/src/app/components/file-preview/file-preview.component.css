@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.file-preview {
+  border: 1px solid #444;
+}
+
+.filebox {
+  width: max-content;
+  border: 1px solid var(--light-gray);
+  border-radius: 0.5rem;
+  width: 150px;
+  padding: 0.5rem;
+  box-shadow: 1px 1px 10px rgb(0, 0, 0, 0.25);
+  margin: 0.25rem 1rem;
+}
+
+.filename {
+  color: #444;
+  font-weight: bold;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filename:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

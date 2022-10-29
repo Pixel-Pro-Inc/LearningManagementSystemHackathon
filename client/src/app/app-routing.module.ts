@@ -1,0 +1,37 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AssessmentComponent } from './components/assessment/assessment.component';
+import { AssignmentComponent } from './components/assignment/assignment.component';
+import { CourseComponent } from './components/course/course.component';
+import { DriveComponent } from './components/drive/drive.component';
+import { LoginComponent } from './components/login/login.component';
+import { OfficeComponent } from './components/office/office.component';
+import { StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component';
+import { TeacherDashboardComponent } from './components/teacher-dashboard/teacher-dashboard.component';
+import { LoggedInStudentGuard } from './_guards/logged-in-student.guard';
+import { LoggedInTeacherGuard } from './_guards/logged-in-teacher.guard';
+
+const routes: Routes = [
+  {
+    path: 'student-dashboard',
+    component: StudentDashboardComponent,
+    canActivate: [LoggedInStudentGuard],
+  },
+  {
+    path: 'teacher-dashboard',
+    component: TeacherDashboardComponent,
+    canActivate: [LoggedInTeacherGuard],
+  },
+  { path: '', component: LoginComponent },
+  { path: 'myoffice', component: OfficeComponent },
+  { path: 'mydrive', component: DriveComponent },
+  { path: 'course', component: CourseComponent },
+  { path: 'assignment', component: AssignmentComponent },
+  { path: 'assessment', component: AssessmentComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}

@@ -1,0 +1,7 @@
+.avatar-img {
+  border-radius: 50%;
+}
+
+nav {
+  background-color: var(--dark-color);
+}
