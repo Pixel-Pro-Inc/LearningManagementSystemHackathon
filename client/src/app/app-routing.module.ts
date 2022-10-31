@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AssessmentComponent } from './components/assessment/assessment.component';
 import { AssignmentComponent } from './components/assignment/assignment.component';
+import { CourseStaffComponent } from './components/course-staff/course-staff.component';
 import { CourseComponent } from './components/course/course.component';
 import { DriveComponent } from './components/drive/drive.component';
 import { LoginComponent } from './components/login/login.component';
@@ -17,6 +18,21 @@ const routes: Routes = [
     path: 'student-dashboard',
     component: StudentDashboardComponent,
     canActivate: [LoggedInStudentGuard],
+  },
+  {
+    path: 'teacher-course',
+    component: CourseStaffComponent,
+    canActivate: [LoggedInTeacherGuard],
+  },
+  {
+    path: 'teacher-assessment',
+    component: AssessmentComponent,
+    canActivate: [LoggedInTeacherGuard],
+  },
+  {
+    path: 'teacher-assignment',
+    component: AssignmentComponent,
+    canActivate: [LoggedInTeacherGuard],
   },
   {
     path: 'teacher-dashboard',

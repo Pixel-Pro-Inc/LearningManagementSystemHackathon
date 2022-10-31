@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   DayService,
   WeekService,
@@ -8,7 +8,11 @@ import {
   MonthAgendaService,
   TimelineViewsService,
   TimelineMonthService,
+  EventSettingsModel,
+  ScheduleComponent,
 } from '@syncfusion/ej2-angular-schedule';
+import { DashboardService } from 'src/app/_services/dashboard.service';
+import { SharedService } from 'src/app/_services/shared.service';
 
 @Component({
   selector: 'app-calendar',
@@ -26,7 +30,60 @@ import {
   ],
 })
 export class CalendarComponent implements OnInit {
-  constructor() {}
+  @ViewChild('scheduleObj')
+  public scheduleObj: ScheduleComponent;
 
-  ngOnInit(): void {}
+  constructor(
+    private shared: SharedService,
+    private dashboardService: DashboardService
+  ) {}
+
+  ngOnInit(): void {
+    this.getAppointments();
+  }
+
+  getAppointments() {
+    this.dashboardService.getAppointments(this.shared.getUser()).subscribe(
+      (response) => {
+        let model: any = response;
+
+        if (model == null) {
+          return;
+        }
+        this.data = JSON.parse(model.event);
+
+        this.scheduleObj.addEvent(this.data);
+      },
+      (error) => {
+        this.shared.toastr.error(error.error);
+      }
+    );
+  }
+
+  saveAppointments() {
+    let appointments: any = {
+      ownerId: this.shared.getUser().organizationId,
+      event: JSON.stringify(this.scheduleObj.getEvents()),
+    };
+
+    this.dashboardService.create_Edit_Appointment(appointments).subscribe(
+      (response) => {},
+      (error) => {
+        this.shared.toastr.error(error.error);
+      }
+    );
+  }
+
+  onCreated() {
+    this.scheduleObj.addEventListener('popupClose', () => {
+      setTimeout(() => {
+        this.saveAppointments();
+      }, 1000);
+    });
+  }
+
+  public data: any = [];
+  public eventSettings: EventSettingsModel = {
+    dataSource: this.data,
+  };
 }

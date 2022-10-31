@@ -1,0 +1,172 @@
+header {
+  background-color: var(--dark-color);
+  padding: 2rem;
+  margin-top: 56px;
+  margin-bottom: 1.5rem;
+}
+
+.header-text {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+article {
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.article-header {
+  display: flex;
+}
+
+.article-header-icon {
+  fill: var(--light-green);
+  width: 45px;
+  height: 45px;
+  margin-right: 1rem;
+}
+
+.article-header-text {
+  margin: auto 0;
+  color: #444;
+}
+
+.article-box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.article-box-block {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.article-box-block.table {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.join-class {
+  background-color: #292929;
+  width: max-content;
+  padding: 1rem;
+  display: flex;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 20px rgb(0, 0, 0, 0.25);
+  position: fixed;
+  top: 120px;
+  right: 10px;
+}
+
+.join-class-btn {
+  background-color: #900dff;
+  color: #fae100;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  border: none;
+  width: 80px;
+  margin-right: 0.5rem;
+}
+
+.join-class-text {
+  color: #fff;
+  margin: auto 0;
+}
+
+.link {
+  color: var(--light-green);
+  display: block;
+}
+
+.article-box-subheading {
+  font-size: 1.3rem;
+  color: #444;
+  font-weight: bold;
+  margin: 0;
+}
+
+.article-rule {
+  width: 90%;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.files {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.file {
+  display: flex;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  border: 1px solid var(--light-gray);
+  background-color: transparent;
+  margin: 0.15rem 0.15rem;
+  width: 350px;
+}
+.drive-icon {
+  fill: #444;
+  width: 40px;
+  width: 40px;
+}
+
+.drive-name-text {
+  margin: 0;
+  font-weight: bold;
+  margin: auto 0;
+  margin-left: 0.35rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drive-rule {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.drive-header-title {
+  margin: 0;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  font-size: 1.4rem;
+}
+
+.file-button {
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  margin: 0 0.1rem;
+}
+
+.file-button:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+.file-button-icon {
+  fill: #444;
+  width: 30px;
+  height: 30px;
+}
+
+.a-group {
+  display: flex;
+  margin-bottom: 0.2rem;
+}
+
+.link {
+  margin: auto 0;
+}
+
+.file-input {
+  display: flex;
+  width: 75%;
+}

@@ -7,9 +7,11 @@
         public string LastName { get; set; }
         public string Token { get; set; }
         public List<string> Languages { get; set; }
-        public string StudentId { get; set; }
+        public string OrganizationId { get; set; }
         public string Email { get; set; }
         public string AccountType { get; set; }
         public bool Disabled { get; set; }
+        public string AvatarUrl { get; set; }
+        public string? AvatarPublicId { get; set; }
     }
 }

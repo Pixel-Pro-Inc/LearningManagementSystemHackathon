@@ -29,5 +29,10 @@ namespace API.Infrastructure.Services
 
             return user == null? null: (User)user;
         }
+
+        public async Task<List<User>> GetUsers()
+        {
+            return await _firebaseService.GetData<User>("Account");
+        }
     }
 }

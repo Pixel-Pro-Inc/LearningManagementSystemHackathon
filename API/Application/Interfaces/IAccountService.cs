@@ -5,5 +5,7 @@ namespace API.Application.Interfaces
     public interface IAccountService
     {
         public Task<User> GetUser(string organizationId);
+
+        public Task<List<User>> GetUsers();
     }
 }
