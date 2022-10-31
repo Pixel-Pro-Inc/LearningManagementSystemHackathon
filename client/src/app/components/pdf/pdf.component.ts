@@ -38,7 +38,17 @@ export class PdfComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public loadPDF(_document: string) {
+  public loadDoc() {
+    if (localStorage.getItem('localFile') == null) {
+      return;
+    }
+
+    let _document: string = JSON.parse(
+      localStorage.getItem('localFile')
+    ).fileUrl;
+
+    localStorage.removeItem('localFile');
+
     this.shared.http
       .get(_document, { responseType: 'blob' })
       .subscribe((blob) => {

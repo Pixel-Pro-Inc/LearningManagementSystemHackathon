@@ -16,10 +16,6 @@ export class OfficeComponent implements OnInit {
   docSearchForm: FormGroup;
   files: any = [];
 
-  @ViewChild('pdfComponent') pdfComponent: PdfComponent;
-  @ViewChild('docComponent') docComponent: DocEditorComponent;
-  @ViewChild('excelComponent') excelComponent: ExcelComponent;
-
   constructor(
     private fb: FormBuilder,
     public shared: SharedService,
@@ -35,29 +31,32 @@ export class OfficeComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
     this.populateDocuments();
+
+    this.clearFileLocal();
+  }
+
+  clearFileLocal() {
+    localStorage.removeItem('localFile');
   }
 
   openEditor(file: any) {
-    if (file.fileType == 'pdf') {
-      this.toggleApp('pdf');
-      //Load Doc
+    localStorage.setItem('localFile', JSON.stringify(file));
 
-      this.pdfComponent.loadPDF(file.fileUrl);
+    let dest: string = '';
+
+    if (file.fileType == 'pdf') {
+      dest = 'pdf';
     }
 
     if (file.fileType == 'docx') {
-      this.toggleApp('word');
-      //Load Doc
-
-      this.docComponent.loadDoc(file);
+      dest = 'word';
     }
 
     if (file.fileType == 'xlsx') {
-      this.toggleApp('excel');
-      //Load Doc
-
-      this.excelComponent.loadDoc(file);
+      dest = 'excel';
     }
+
+    this.shared.router.navigateByUrl('/' + dest);
   }
 
   populateDocuments() {
@@ -72,14 +71,7 @@ export class OfficeComponent implements OnInit {
   }
 
   toggleApp(element: string) {
-    let adoc = document.getElementById('sidebar');
-    adoc.classList.toggle('close');
-
-    let _doc = document.getElementById('home');
-    _doc.classList.toggle('close');
-
-    let doc = document.getElementById(element);
-    doc.classList.toggle('close');
+    this.shared.router.navigateByUrl('/' + element);
   }
 
   reloadPage() {

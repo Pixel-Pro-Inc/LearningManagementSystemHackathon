@@ -32,10 +32,7 @@
         >
       </li>
       <li *ngIf="isTeacher()" class="nav-item">
-        <a
-          class="nav-link"
-          href="/teacher-dashboard#Calendar"
-          routerLinkActive="active"
+        <a class="nav-link" routerLink="/calendar" routerLinkActive="active"
           >Calendar</a
         >
       </li>
@@ -56,10 +53,7 @@
         >
       </li>
       <li *ngIf="!isTeacher()" class="nav-item">
-        <a
-          class="nav-link"
-          href="/student-dashboard#Calendar"
-          routerLinkActive="active"
+        <a class="nav-link" routerLink="/calendar" routerLinkActive="active"
           >Calendar</a
         >
       </li>

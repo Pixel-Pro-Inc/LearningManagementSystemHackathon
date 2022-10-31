@@ -1,4 +1,106 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+  <a class="navbar-brand" href="#">Learning Platform</a>
+  <button
+    class="navbar-toggler collapsed"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarCollapse"
+    aria-controls="navbarCollapse"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    (click)="toggleNav()"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse collapse" id="navbarCollapse">
+    <!--Navigation Links & Avatar Here-->
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf="isTeacher()" class="nav-item">
+        <a
+          class="nav-link"
+          href="/teacher-dashboard#Announcements"
+          routerLinkActive="active"
+          >Announcements</a
+        >
+      </li>
+      <li *ngIf="isTeacher()" class="nav-item">
+        <a
+          class="nav-link"
+          href="/teacher-dashboard#MyCourses"
+          routerLinkActive="active"
+          >My Courses</a
+        >
+      </li>
+      <li *ngIf="isTeacher()" class="nav-item">
+        <a class="nav-link" routerLink="/calendar" routerLinkActive="active"
+          >Calendar</a
+        >
+      </li>
+      <li *ngIf="!isTeacher()" class="nav-item">
+        <a
+          class="nav-link"
+          href="/student-dashboard#Announcements"
+          routerLinkActive="active"
+          >Announcements</a
+        >
+      </li>
+      <li *ngIf="!isTeacher()" class="nav-item">
+        <a
+          class="nav-link"
+          href="/student-dashboard#MyCourses"
+          routerLinkActive="active"
+          >My Courses</a
+        >
+      </li>
+      <li *ngIf="!isTeacher()" class="nav-item">
+        <a class="nav-link" routerLink="/calendar" routerLinkActive="active"
+          >Calendar</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/myoffice"
+          >My Office</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/mydrive"
+          >My Drive</a
+        >
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="dropdown03"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          ><img src="{{ getUser().avatarUrl }}" alt="Avatar" class="avatar-img"
+        /></a>
+        <ul class="dropdown-content" aria-labelledby="dropdown03">
+          <li>
+            <a class="nav-link" routerLinkActive="active" routerLink="/profile"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <a class="nav-link out" (click)="signOut()">
+              <svg class="icon" viewBox="0 0 256 256">
+                <path
+                  d="M224.48633,136.48438l-41.98926,42a12.0001,12.0001,0,0,1-16.97266-16.96876L187.03467,140H104a12,12,0,0,1,0-24h83.03467L165.52441,94.48438a12.0001,12.0001,0,0,1,16.97266-16.96876l41.98926,42A12.00094,12.00094,0,0,1,224.48633,136.48438ZM104,204H52V52h52a12,12,0,0,0,0-24H48A20.02229,20.02229,0,0,0,28,48V208a20.02229,20.02229,0,0,0,20,20h56a12,12,0,0,0,0-24Z"
+                />
+              </svg>
+              Sign out</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <ejs-schedule
+  style="margin-top: 56px"
   #scheduleObj
   (created)="onCreated()"
   [eventSettings]="eventSettings"

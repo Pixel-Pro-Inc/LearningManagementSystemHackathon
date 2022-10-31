@@ -1,6 +1,7 @@
 <div class="content-wrapper">
   <ejs-pdfviewer
     id="pdfViewer"
+    (created)="loadDoc()"
     [serviceUrl]="service"
     style="height: 640px; display: block"
   ></ejs-pdfviewer>

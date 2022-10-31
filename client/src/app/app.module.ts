@@ -17,22 +17,8 @@ import { MessagingComponent } from './components/messaging/messaging.component';
 import { StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component';
 import { TeacherDashboardComponent } from './components/teacher-dashboard/teacher-dashboard.component';
 import { MsgInputComponent } from './_forms/msg-input/msg-input.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
 import { OfficeComponent } from './components/office/office.component';
-import {
-  ScheduleModule,
-  RecurrenceEditorModule,
-} from '@syncfusion/ej2-angular-schedule';
-import { DocEditorComponent } from './components/doc-editor/doc-editor.component';
-import { ExcelComponent } from './components/excel/excel.component';
-import { PdfComponent } from './components/pdf/pdf.component';
 import { PowerpointComponent } from './components/powerpoint/powerpoint.component';
-import {
-  DocumentEditorModule,
-  DocumentEditorContainerModule,
-} from '@syncfusion/ej2-angular-documenteditor';
-import { SpreadsheetModule } from '@syncfusion/ej2-angular-spreadsheet';
-import { PdfViewerModule } from '@syncfusion/ej2-angular-pdfviewer';
 import { DriveComponent } from './components/drive/drive.component';
 import { CourseComponent } from './components/course/course.component';
 import { FilePreviewComponent } from './components/file-preview/file-preview.component';
@@ -54,11 +40,7 @@ import { AssignmentTeacherComponent } from './components/assignment-teacher/assi
     StudentDashboardComponent,
     TeacherDashboardComponent,
     MsgInputComponent,
-    CalendarComponent,
     OfficeComponent,
-    DocEditorComponent,
-    ExcelComponent,
-    PdfComponent,
     PowerpointComponent,
     DriveComponent,
     CourseComponent,
@@ -78,15 +60,9 @@ import { AssignmentTeacherComponent } from './components/assignment-teacher/assi
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    ScheduleModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
-    RecurrenceEditorModule,
-    DocumentEditorModule,
-    DocumentEditorContainerModule,
-    SpreadsheetModule,
-    PdfViewerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -11,6 +11,7 @@ import {
   EventSettingsModel,
   ScheduleComponent,
 } from '@syncfusion/ej2-angular-schedule';
+import { AccountService } from 'src/app/_services/account.service';
 import { DashboardService } from 'src/app/_services/dashboard.service';
 import { SharedService } from 'src/app/_services/shared.service';
 
@@ -33,9 +34,30 @@ export class CalendarComponent implements OnInit {
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent;
 
+  toggleNav() {
+    let navLinks = document.getElementById('navbarCollapse');
+    console.log(navLinks);
+    navLinks.classList.toggle('collapse');
+  }
+
+  signOut() {
+    this.accountService.logout();
+  }
+
+  isTeacher() {
+    return (
+      this.shared.getUser().accountType == this.shared.AccountTypes.Teacher
+    );
+  }
+
+  getUser() {
+    return this.shared.getUser();
+  }
+
   constructor(
     private shared: SharedService,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private accountService: AccountService
   ) {}
 
   ngOnInit(): void {

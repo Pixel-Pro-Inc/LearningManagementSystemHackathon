@@ -30,9 +30,19 @@ export class DocEditorComponent implements OnInit {
   onCreated() {
     this.documentEditorContainer.toolbar.enableItems(0, false);
     this.documentEditorContainer.toolbar.enableItems(1, false);
+
+    this.loadDoc();
   }
 
-  public loadDoc(_file: any) {
+  public loadDoc() {
+    if (localStorage.getItem('localFile') == null) {
+      return;
+    }
+
+    let _file: any = JSON.parse(localStorage.getItem('localFile'));
+
+    localStorage.removeItem('localFile');
+
     this.file = _file;
 
     if (this.documentEditorContainer.documentEditor.isDocumentLoaded) {

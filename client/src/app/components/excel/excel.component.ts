@@ -21,7 +21,15 @@ export class ExcelComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public loadDoc(_file: any) {
+  public loadDoc() {
+    if (localStorage.getItem('localFile') == null) {
+      return;
+    }
+
+    let _file: any = JSON.parse(localStorage.getItem('localFile'));
+
+    localStorage.removeItem('localFile');
+
     this.file = _file;
 
     this.shared.http
