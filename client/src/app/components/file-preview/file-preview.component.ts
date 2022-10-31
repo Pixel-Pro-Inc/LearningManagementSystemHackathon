@@ -17,4 +17,8 @@ export class FilePreviewComponent implements OnInit {
       this.sharedService.AccountTypes.Teacher
     );
   }
+
+  openUrl(url: string) {
+    window.open(url, '_blank');
+  }
 }

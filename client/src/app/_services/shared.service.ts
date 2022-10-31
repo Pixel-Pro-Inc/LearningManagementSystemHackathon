@@ -60,6 +60,6 @@ export class SharedService {
     localStorage.removeItem('user');
   }
 
-  //public baseUrl = 'https://learning-system-hack.herokuapp.com/api/';
-  public baseUrl = 'https://localhost:7294/api/';
+  public baseUrl = 'https://learning-system-hack.herokuapp.com/api/';
+  //public baseUrl = 'https://localhost:7294/api/';
 }

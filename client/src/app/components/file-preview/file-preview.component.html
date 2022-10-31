@@ -1,10 +1,19 @@
 <div class="filebox">
   <iframe
-    src="../../../assets/Trading-Volatility.pdf"
+    src="https://firebasestorage.googleapis.com/v0/b/learning-management-hackathon.appspot.com/o/Trading-Volatility.pdf?alt=media&token=2afbf856-9111-47d3-8681-148735c6ee2d"
     frameborder="0"
     class="file-preview"
   ></iframe>
-  <p href="" class="filename">Trading-Volatility.pdf</p>
+  <p
+    (click)="
+      openUrl(
+        'https://firebasestorage.googleapis.com/v0/b/learning-management-hackathon.appspot.com/o/Trading-Volatility.pdf?alt=media&token=2afbf856-9111-47d3-8681-148735c6ee2d'
+      )
+    "
+    class="filename"
+  >
+    Trading-Volatility.pdf
+  </p>
   <button *ngIf="isTeacher()" class="file-button">
     <svg class="file-button-icon" viewBox="0 0 473 473">
       <g>
