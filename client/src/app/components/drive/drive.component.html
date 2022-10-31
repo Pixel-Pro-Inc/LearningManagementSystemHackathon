@@ -87,7 +87,7 @@
       </div>
       <div class="middle-sidebar">
         <ul class="sidebar-list">
-          <li class="sidebar-list-item">
+          <li class="sidebar-list-item" (click)="toggleModal('newFolder')">
             <a class="sidebar-link">
               <svg class="sidebar-icon" viewBox="0 0 16 16">
                 <path
@@ -99,7 +99,7 @@
               <div class="sidebar-link-text hidden-sidebar">New Folder</div>
             </a>
           </li>
-          <li class="sidebar-list-item">
+          <li class="sidebar-list-item" (click)="toggleModal('newFile')">
             <a class="sidebar-link">
               <svg viewBox="0 0 16 16" class="sidebar-icon">
                 <path
@@ -116,7 +116,7 @@
     </aside>
     <main class="content" id="content">
       <nav class="sub-nav">
-        <button class="sub-nav-btn">
+        <button class="sub-nav-btn" (click)="navigateBack()">
           <svg class="sub-nav-btn-icon" viewBox="0 0 486.975 486.975">
             <g>
               <path
@@ -140,63 +140,99 @@
             <g></g>
           </svg>
         </button>
-        <h2 class="sub-nav-text">My Drive</h2>
+        <h2 class="sub-nav-text">{{ currentDirectory }}</h2>
       </nav>
       <p class="drive-header-title">Folders</p>
       <div class="folders">
-        <button class="folder">
-          <svg viewBox="0 0 16 16" class="drive-icon">
-            <path
-              d="M14.5 3H7.71l-.85-.85L6.51 2h-5l-.5.5v11l.5.5h13l.5-.5v-10L14.5 3zm-.51 8.49V13h-12V7h4.49l.35-.15.86-.86H14v1.5l-.01 4zm0-6.49h-6.5l-.35.15-.86.86H2v-3h4.29l.85.85.36.15H14l-.01.99z"
-            />
-          </svg>
-          <p class="drive-name-text">Reports</p>
-        </button>
-        <button class="folder">
-          <svg viewBox="0 0 16 16" class="drive-icon">
-            <path
-              d="M14.5 3H7.71l-.85-.85L6.51 2h-5l-.5.5v11l.5.5h13l.5-.5v-10L14.5 3zm-.51 8.49V13h-12V7h4.49l.35-.15.86-.86H14v1.5l-.01 4zm0-6.49h-6.5l-.35.15-.86.86H2v-3h4.29l.85.85.36.15H14l-.01.99z"
-            />
-          </svg>
-          <p class="drive-name-text">ECO 112</p>
-        </button>
-        <button class="folder">
-          <svg viewBox="0 0 16 16" class="drive-icon">
-            <path
-              d="M14.5 3H7.71l-.85-.85L6.51 2h-5l-.5.5v11l.5.5h13l.5-.5v-10L14.5 3zm-.51 8.49V13h-12V7h4.49l.35-.15.86-.86H14v1.5l-.01 4zm0-6.49h-6.5l-.35.15-.86.86H2v-3h4.29l.85.85.36.15H14l-.01.99z"
-            />
-          </svg>
-          <p class="drive-name-text">Assignments</p>
-        </button>
-        <button class="folder">
-          <svg viewBox="0 0 16 16" class="drive-icon">
-            <path
-              d="M14.5 3H7.71l-.85-.85L6.51 2h-5l-.5.5v11l.5.5h13l.5-.5v-10L14.5 3zm-.51 8.49V13h-12V7h4.49l.35-.15.86-.86H14v1.5l-.01 4zm0-6.49h-6.5l-.35.15-.86.86H2v-3h4.29l.85.85.36.15H14l-.01.99z"
-            />
-          </svg>
-          <p class="drive-name-text">MGL 201</p>
-        </button>
-        <button class="folder">
-          <svg viewBox="0 0 16 16" class="drive-icon">
-            <path
-              d="M14.5 3H7.71l-.85-.85L6.51 2h-5l-.5.5v11l.5.5h13l.5-.5v-10L14.5 3zm-.51 8.49V13h-12V7h4.49l.35-.15.86-.86H14v1.5l-.01 4zm0-6.49h-6.5l-.35.15-.86.86H2v-3h4.29l.85.85.36.15H14l-.01.99z"
-            />
-          </svg>
-          <p class="drive-name-text">Pictures</p>
-        </button>
-        <button class="folder">
-          <svg viewBox="0 0 16 16" class="drive-icon">
-            <path
-              d="M14.5 3H7.71l-.85-.85L6.51 2h-5l-.5.5v11l.5.5h13l.5-.5v-10L14.5 3zm-.51 8.49V13h-12V7h4.49l.35-.15.86-.86H14v1.5l-.01 4zm0-6.49h-6.5l-.35.15-.86.86H2v-3h4.29l.85.85.36.15H14l-.01.99z"
-            />
-          </svg>
-          <p class="drive-name-text">Pictures</p>
-        </button>
+        <ng-container *ngFor="let folder of displayFolders">
+          <div class="folder">
+            <div class="folder-start">
+              <svg viewBox="0 0 16 16" class="drive-icon">
+                <path
+                  d="M14.5 3H7.71l-.85-.85L6.51 2h-5l-.5.5v11l.5.5h13l.5-.5v-10L14.5 3zm-.51 8.49V13h-12V7h4.49l.35-.15.86-.86H14v1.5l-.01 4zm0-6.49h-6.5l-.35.15-.86.86H2v-3h4.29l.85.85.36.15H14l-.01.99z"
+                />
+              </svg>
+              <a
+                (click)="openFolder(folder.folderName)"
+                class="drive-name-text"
+                >{{ folder.folderName }}</a
+              >
+            </div>
+            <button class="file-button" (click)="deleteFolder(folder)">
+              <svg class="file-button-icon" viewBox="0 0 473 473">
+                <g>
+                  <path
+                    d="M317.667,214.42l5.667-86.42h20.951V38h-98.384V0H132.669v38H34.285v90h20.951l20,305h140.571   c23.578,24.635,56.766,40,93.478,40c71.368,0,129.43-58.062,129.43-129.43C438.715,275.019,385.143,218.755,317.667,214.42z    M162.669,30h53.232v8h-53.232V30z M64.285,68h250v30h-250V68z M103.334,403L85.301,128H293.27l-5.77,87.985   c-61.031,10.388-107.645,63.642-107.645,127.586c0,21.411,5.231,41.622,14.475,59.43H103.334z M309.285,443   c-54.826,0-99.43-44.604-99.43-99.43s44.604-99.429,99.43-99.429s99.43,44.604,99.43,99.429S364.111,443,309.285,443z"
+                  />
+                  <polygon
+                    points="342.248,289.395 309.285,322.358 276.322,289.395 255.109,310.608 288.072,343.571 255.109,376.533    276.322,397.746 309.285,364.783 342.248,397.746 363.461,376.533 330.498,343.571 363.461,310.608  "
+                  />
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+      <div *ngFor="let column of folderColumns" class="folders">
+        <div *ngFor="let folder of column" class="column">
+          <button class="folder" (click)="openFolder(folder.folderName)">
+            <div class="folder-start">
+              <svg viewBox="0 0 16 16" class="drive-icon">
+                <path
+                  d="M14.5 3H7.71l-.85-.85L6.51 2h-5l-.5.5v11l.5.5h13l.5-.5v-10L14.5 3zm-.51 8.49V13h-12V7h4.49l.35-.15.86-.86H14v1.5l-.01 4zm0-6.49h-6.5l-.35.15-.86.86H2v-3h4.29l.85.85.36.15H14l-.01.99z"
+                />
+              </svg>
+              <p class="drive-name-text">{{ folder.folderName }}</p>
+            </div>
+            <button class="file-button" (click)="deleteFolder(folder)">
+              <svg class="file-button-icon" viewBox="0 0 473 473">
+                <g>
+                  <path
+                    d="M317.667,214.42l5.667-86.42h20.951V38h-98.384V0H132.669v38H34.285v90h20.951l20,305h140.571   c23.578,24.635,56.766,40,93.478,40c71.368,0,129.43-58.062,129.43-129.43C438.715,275.019,385.143,218.755,317.667,214.42z    M162.669,30h53.232v8h-53.232V30z M64.285,68h250v30h-250V68z M103.334,403L85.301,128H293.27l-5.77,87.985   c-61.031,10.388-107.645,63.642-107.645,127.586c0,21.411,5.231,41.622,14.475,59.43H103.334z M309.285,443   c-54.826,0-99.43-44.604-99.43-99.43s44.604-99.429,99.43-99.429s99.43,44.604,99.43,99.429S364.111,443,309.285,443z"
+                  />
+                  <polygon
+                    points="342.248,289.395 309.285,322.358 276.322,289.395 255.109,310.608 288.072,343.571 255.109,376.533    276.322,397.746 309.285,364.783 342.248,397.746 363.461,376.533 330.498,343.571 363.461,310.608  "
+                  />
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+            </button>
+          </button>
+        </div>
       </div>
       <hr class="drive-rule" />
       <p class="drive-header-title">Files</p>
       <div class="files">
-        <div class="file">
+        <div *ngFor="let file of displayFiles" class="file">
           <svg class="drive-icon" viewBox="0 0 16 16">
             <path
               fill-rule="evenodd"
@@ -204,8 +240,8 @@
               d="M13.71 4.29l-3-3L10 1H4L3 2v12l1 1h9l1-1V5l-.29-.71zM13 14H4V2h5v4h4v8zm-3-9V2l3 3h-3z"
             />
           </svg>
-          <p class="drive-name-text">MGT 400 Report.docx</p>
-          <button class="file-button">
+          <p class="drive-name-text">{{ file.fileName }}</p>
+          <button class="file-button" (click)="downloadFile(file.fileUrl)">
             <svg class="file-button-icon" viewBox="0 0 485 485">
               <g>
                 <g>
@@ -234,139 +270,7 @@
               <g></g>
             </svg>
           </button>
-          <button class="file-button">
-            <svg class="file-button-icon" viewBox="0 0 473 473">
-              <g>
-                <path
-                  d="M317.667,214.42l5.667-86.42h20.951V38h-98.384V0H132.669v38H34.285v90h20.951l20,305h140.571   c23.578,24.635,56.766,40,93.478,40c71.368,0,129.43-58.062,129.43-129.43C438.715,275.019,385.143,218.755,317.667,214.42z    M162.669,30h53.232v8h-53.232V30z M64.285,68h250v30h-250V68z M103.334,403L85.301,128H293.27l-5.77,87.985   c-61.031,10.388-107.645,63.642-107.645,127.586c0,21.411,5.231,41.622,14.475,59.43H103.334z M309.285,443   c-54.826,0-99.43-44.604-99.43-99.43s44.604-99.429,99.43-99.429s99.43,44.604,99.43,99.429S364.111,443,309.285,443z"
-                />
-                <polygon
-                  points="342.248,289.395 309.285,322.358 276.322,289.395 255.109,310.608 288.072,343.571 255.109,376.533    276.322,397.746 309.285,364.783 342.248,397.746 363.461,376.533 330.498,343.571 363.461,310.608  "
-                />
-              </g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-            </svg>
-          </button>
-        </div>
-        <div class="file">
-          <svg class="drive-icon" viewBox="0 0 16 16">
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M13.71 4.29l-3-3L10 1H4L3 2v12l1 1h9l1-1V5l-.29-.71zM13 14H4V2h5v4h4v8zm-3-9V2l3 3h-3z"
-            />
-          </svg>
-          <p class="drive-name-text">MGT 400 Report.docx</p>
-          <button class="file-button">
-            <svg class="file-button-icon" viewBox="0 0 485 485">
-              <g>
-                <g>
-                  <path
-                    d="M426.5,458h-368C51,458,45,464,45,471.5S51,485,58.5,485h368c7.5,0,13.5-6,13.5-13.5S434,458,426.5,458z"
-                  />
-                  <path
-                    d="M233,378.7c2.5,2.5,6,4,9.5,4s7-1.4,9.5-4l107.5-107.5c5.3-5.3,5.3-13.8,0-19.1c-5.3-5.3-13.8-5.3-19.1,0L256,336.5v-323    C256,6,250,0,242.5,0S229,6,229,13.5v323l-84.4-84.4c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1L233,378.7z"
-                  />
-                </g>
-              </g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-            </svg>
-          </button>
-          <button class="file-button">
-            <svg class="file-button-icon" viewBox="0 0 473 473">
-              <g>
-                <path
-                  d="M317.667,214.42l5.667-86.42h20.951V38h-98.384V0H132.669v38H34.285v90h20.951l20,305h140.571   c23.578,24.635,56.766,40,93.478,40c71.368,0,129.43-58.062,129.43-129.43C438.715,275.019,385.143,218.755,317.667,214.42z    M162.669,30h53.232v8h-53.232V30z M64.285,68h250v30h-250V68z M103.334,403L85.301,128H293.27l-5.77,87.985   c-61.031,10.388-107.645,63.642-107.645,127.586c0,21.411,5.231,41.622,14.475,59.43H103.334z M309.285,443   c-54.826,0-99.43-44.604-99.43-99.43s44.604-99.429,99.43-99.429s99.43,44.604,99.43,99.429S364.111,443,309.285,443z"
-                />
-                <polygon
-                  points="342.248,289.395 309.285,322.358 276.322,289.395 255.109,310.608 288.072,343.571 255.109,376.533    276.322,397.746 309.285,364.783 342.248,397.746 363.461,376.533 330.498,343.571 363.461,310.608  "
-                />
-              </g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-            </svg>
-          </button>
-        </div>
-        <div class="file">
-          <svg class="drive-icon" viewBox="0 0 16 16">
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M13.71 4.29l-3-3L10 1H4L3 2v12l1 1h9l1-1V5l-.29-.71zM13 14H4V2h5v4h4v8zm-3-9V2l3 3h-3z"
-            />
-          </svg>
-          <p class="drive-name-text">MGT 400 Report.docx</p>
-          <button class="file-button">
-            <svg class="file-button-icon" viewBox="0 0 485 485">
-              <g>
-                <g>
-                  <path
-                    d="M426.5,458h-368C51,458,45,464,45,471.5S51,485,58.5,485h368c7.5,0,13.5-6,13.5-13.5S434,458,426.5,458z"
-                  />
-                  <path
-                    d="M233,378.7c2.5,2.5,6,4,9.5,4s7-1.4,9.5-4l107.5-107.5c5.3-5.3,5.3-13.8,0-19.1c-5.3-5.3-13.8-5.3-19.1,0L256,336.5v-323    C256,6,250,0,242.5,0S229,6,229,13.5v323l-84.4-84.4c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1L233,378.7z"
-                  />
-                </g>
-              </g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-            </svg>
-          </button>
-          <button class="file-button">
+          <button class="file-button" (click)="deleteFile(file)">
             <svg class="file-button-icon" viewBox="0 0 473 473">
               <g>
                 <path
@@ -395,6 +299,195 @@
           </button>
         </div>
       </div>
+      <div *ngFor="let column of fileColumns" class="files">
+        <div *ngFor="let file of column" class="column">
+          <div class="file">
+            <svg class="drive-icon" viewBox="0 0 16 16">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M13.71 4.29l-3-3L10 1H4L3 2v12l1 1h9l1-1V5l-.29-.71zM13 14H4V2h5v4h4v8zm-3-9V2l3 3h-3z"
+              />
+            </svg>
+            <p class="drive-name-text">{{ file.fileName }}</p>
+            <button class="file-button" (click)="downloadFile(file.fileUrl)">
+              <svg class="file-button-icon" viewBox="0 0 485 485">
+                <g>
+                  <g>
+                    <path
+                      d="M426.5,458h-368C51,458,45,464,45,471.5S51,485,58.5,485h368c7.5,0,13.5-6,13.5-13.5S434,458,426.5,458z"
+                    />
+                    <path
+                      d="M233,378.7c2.5,2.5,6,4,9.5,4s7-1.4,9.5-4l107.5-107.5c5.3-5.3,5.3-13.8,0-19.1c-5.3-5.3-13.8-5.3-19.1,0L256,336.5v-323    C256,6,250,0,242.5,0S229,6,229,13.5v323l-84.4-84.4c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1L233,378.7z"
+                    />
+                  </g>
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+            </button>
+            <button class="file-button" (click)="deleteFile(file)">
+              <svg class="file-button-icon" viewBox="0 0 473 473">
+                <g>
+                  <path
+                    d="M317.667,214.42l5.667-86.42h20.951V38h-98.384V0H132.669v38H34.285v90h20.951l20,305h140.571   c23.578,24.635,56.766,40,93.478,40c71.368,0,129.43-58.062,129.43-129.43C438.715,275.019,385.143,218.755,317.667,214.42z    M162.669,30h53.232v8h-53.232V30z M64.285,68h250v30h-250V68z M103.334,403L85.301,128H293.27l-5.77,87.985   c-61.031,10.388-107.645,63.642-107.645,127.586c0,21.411,5.231,41.622,14.475,59.43H103.334z M309.285,443   c-54.826,0-99.43-44.604-99.43-99.43s44.604-99.429,99.43-99.429s99.43,44.604,99.43,99.429S364.111,443,309.285,443z"
+                  />
+                  <polygon
+                    points="342.248,289.395 309.285,322.358 276.322,289.395 255.109,310.608 288.072,343.571 255.109,376.533    276.322,397.746 309.285,364.783 342.248,397.746 363.461,376.533 330.498,343.571 363.461,310.608  "
+                  />
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
+    <aside id="modalParent" class="close modal-holder">
+      <div id="newFolder" class="close new-folder">
+        <div class="header">
+          <p class="header-text">Create a new folder</p>
+          <button class="chat-btn" (click)="toggleModal('newFolder')">
+            <svg class="chat-icon" viewBox="0 0 371.23 371.23">
+              <polygon
+                points="371.23,21.213 350.018,0 185.615,164.402 21.213,0 0,21.213 164.402,185.615 0,350.018 21.213,371.23   185.615,206.828 350.018,371.23 371.23,350.018 206.828,185.615 "
+              />
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+            </svg>
+          </button>
+        </div>
+        <div class="form-body">
+          <p>
+            Create folder at
+            <span class="fw-bold text-success">{{ currentDirectory }}</span>
+          </p>
+          <form
+            [formGroup]="createFolderForm"
+            (ngSubmit)="createFolderForm.valid && createFolder()"
+            class="form"
+          >
+            <div class="form-group">
+              <label>Folder Name</label>
+              <app-text-input
+                [type]="'text'"
+                id="'Folder_Name'"
+                [formControl]="createFolderForm.controls['folderName']"
+                [label]="'Folder Name'"
+                [placeholder]="'Folder Name'"
+              ></app-text-input>
+            </div>
+            <input
+              style="width: 100%"
+              class="btn btn-success"
+              type="submit"
+              value="Create"
+            />
+          </form>
+        </div>
+      </div>
+
+      <div id="newFile" class="close new-folder">
+        <div class="header">
+          <p class="header-text">Upload a new file</p>
+          <button class="chat-btn" (click)="toggleModal('newFile')">
+            <svg class="chat-icon" viewBox="0 0 371.23 371.23">
+              <polygon
+                points="371.23,21.213 350.018,0 185.615,164.402 21.213,0 0,21.213 164.402,185.615 0,350.018 21.213,371.23   185.615,206.828 350.018,371.23 371.23,350.018 206.828,185.615 "
+              />
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+            </svg>
+          </button>
+        </div>
+        <div class="form-body">
+          <p>
+            Upload file at
+            <span class="fw-bold text-success">{{ currentDirectory }}</span>
+          </p>
+          <form
+            [formGroup]="createFileForm"
+            (ngSubmit)="createFileForm.valid && createFile()"
+            class="form"
+          >
+            <div class="form-group">
+              <label>File Name</label>
+              <app-text-input
+                [type]="'text'"
+                id="'File_Name'"
+                [formControl]="createFileForm.controls['fileName']"
+                [label]="'file name'"
+                [placeholder]="'File Name'"
+              ></app-text-input>
+            </div>
+            <input
+              class="form-control mb-3"
+              type="file"
+              id="file_input"
+              (change)="onFileChange($event)"
+            />
+            <input
+              style="width: 100%"
+              class="btn btn-success"
+              type="submit"
+              value="Upload"
+            />
+          </form>
+        </div>
+      </div>
+    </aside>
   </div>
 </body>
