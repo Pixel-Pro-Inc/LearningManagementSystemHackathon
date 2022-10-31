@@ -13,6 +13,8 @@ namespace API.Application.Extensions
             services.AddScoped<IExcelService, ExcelService>();
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IDashboardServices, DashboardServices>();
+            services.AddScoped<IFirebaseStorageService, FirebaseStorageService>();
+            services.AddScoped<IDriveService, DriveService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IFirebaseService, FirebaseServices>();
 

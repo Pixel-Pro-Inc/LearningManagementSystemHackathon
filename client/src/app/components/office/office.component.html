@@ -85,188 +85,18 @@
         </form>
       </div>
       <div class="middle-sidebar">
-        <ul class="sidebar-list">
-          <li class="sidebar-list-item">
+        <ul *ngFor="let file of files" class="sidebar-list">
+          <li class="sidebar-list-item" (click)="openEditor(file)">
             <a class="sidebar-link">
-              <svg class="sidebar-icon" viewBox="0 0 32 32">
-                <defs>
-                  <linearGradient
-                    id="a"
-                    x1="4.494"
-                    y1="-2092.086"
-                    x2="13.832"
-                    y2="-2075.914"
-                    gradientTransform="translate(0 2100)"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop offset="0" stop-color="#18884f" />
-                    <stop offset="0.5" stop-color="#117e43" />
-                    <stop offset="1" stop-color="#0b6631" />
-                  </linearGradient>
-                </defs>
-                <title>file_type_excel</title>
+              <svg class="sidebar-icon" viewBox="0 0 16 16">
                 <path
-                  d="M19.581,15.35,8.512,13.4V27.809A1.192,1.192,0,0,0,9.705,29h19.1A1.192,1.192,0,0,0,30,27.809h0V22.5Z"
-                  style="fill: #185c37"
-                />
-                <path
-                  d="M19.581,3H9.705A1.192,1.192,0,0,0,8.512,4.191h0V9.5L19.581,16l5.861,1.95L30,16V9.5Z"
-                  style="fill: #21a366"
-                />
-                <path d="M8.512,9.5H19.581V16H8.512Z" style="fill: #107c41" />
-                <path
-                  d="M16.434,8.2H8.512V24.45h7.922a1.2,1.2,0,0,0,1.194-1.191V9.391A1.2,1.2,0,0,0,16.434,8.2Z"
-                  style="opacity: 0.10000000149011612; isolation: isolate"
-                />
-                <path
-                  d="M15.783,8.85H8.512V25.1h7.271a1.2,1.2,0,0,0,1.194-1.191V10.041A1.2,1.2,0,0,0,15.783,8.85Z"
-                  style="opacity: 0.20000000298023224; isolation: isolate"
-                />
-                <path
-                  d="M15.783,8.85H8.512V23.8h7.271a1.2,1.2,0,0,0,1.194-1.191V10.041A1.2,1.2,0,0,0,15.783,8.85Z"
-                  style="opacity: 0.20000000298023224; isolation: isolate"
-                />
-                <path
-                  d="M15.132,8.85H8.512V23.8h6.62a1.2,1.2,0,0,0,1.194-1.191V10.041A1.2,1.2,0,0,0,15.132,8.85Z"
-                  style="opacity: 0.20000000298023224; isolation: isolate"
-                />
-                <path
-                  d="M3.194,8.85H15.132a1.193,1.193,0,0,1,1.194,1.191V21.959a1.193,1.193,0,0,1-1.194,1.191H3.194A1.192,1.192,0,0,1,2,21.959V10.041A1.192,1.192,0,0,1,3.194,8.85Z"
-                  style="fill: url(#a)"
-                />
-                <path
-                  d="M5.7,19.873l2.511-3.884-2.3-3.862H7.758L9.013,14.6c.116.234.2.408.238.524h.017c.082-.188.169-.369.26-.546l1.342-2.447h1.7l-2.359,3.84,2.419,3.905H10.821l-1.45-2.711A2.355,2.355,0,0,1,9.2,16.8H9.176a1.688,1.688,0,0,1-.168.351L7.515,19.873Z"
-                  style="fill: #fff"
-                />
-                <path
-                  d="M28.806,3H19.581V9.5H30V4.191A1.192,1.192,0,0,0,28.806,3Z"
-                  style="fill: #33c481"
-                />
-                <path d="M19.581,16H30v6.5H19.581Z" style="fill: #107c41" />
-              </svg>
-              <div class="sidebar-link-text hidden-sidebar">
-                BIS 205 Homework.xlsx
-              </div>
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a class="sidebar-link">
-              <svg class="sidebar-icon" viewBox="0 0 32 32">
-                <defs>
-                  <linearGradient
-                    id="a"
-                    x1="4.494"
-                    y1="-1712.086"
-                    x2="13.832"
-                    y2="-1695.914"
-                    gradientTransform="translate(0 1720)"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop offset="0" stop-color="#2368c4" />
-                    <stop offset="0.5" stop-color="#1a5dbe" />
-                    <stop offset="1" stop-color="#1146ac" />
-                  </linearGradient>
-                </defs>
-                <title>file_type_word</title>
-                <path
-                  d="M28.806,3H9.705A1.192,1.192,0,0,0,8.512,4.191h0V9.5l11.069,3.25L30,9.5V4.191A1.192,1.192,0,0,0,28.806,3Z"
-                  style="fill: #41a5ee"
-                />
-                <path
-                  d="M30,9.5H8.512V16l11.069,1.95L30,16Z"
-                  style="fill: #2b7cd3"
-                />
-                <path
-                  d="M8.512,16v6.5L18.93,23.8,30,22.5V16Z"
-                  style="fill: #185abd"
-                />
-                <path
-                  d="M9.705,29h19.1A1.192,1.192,0,0,0,30,27.809h0V22.5H8.512v5.309A1.192,1.192,0,0,0,9.705,29Z"
-                  style="fill: #103f91"
-                />
-                <path
-                  d="M16.434,8.2H8.512V24.45h7.922a1.2,1.2,0,0,0,1.194-1.191V9.391A1.2,1.2,0,0,0,16.434,8.2Z"
-                  style="opacity: 0.10000000149011612; isolation: isolate"
-                />
-                <path
-                  d="M15.783,8.85H8.512V25.1h7.271a1.2,1.2,0,0,0,1.194-1.191V10.041A1.2,1.2,0,0,0,15.783,8.85Z"
-                  style="opacity: 0.20000000298023224; isolation: isolate"
-                />
-                <path
-                  d="M15.783,8.85H8.512V23.8h7.271a1.2,1.2,0,0,0,1.194-1.191V10.041A1.2,1.2,0,0,0,15.783,8.85Z"
-                  style="opacity: 0.20000000298023224; isolation: isolate"
-                />
-                <path
-                  d="M15.132,8.85H8.512V23.8h6.62a1.2,1.2,0,0,0,1.194-1.191V10.041A1.2,1.2,0,0,0,15.132,8.85Z"
-                  style="opacity: 0.20000000298023224; isolation: isolate"
-                />
-                <path
-                  d="M3.194,8.85H15.132a1.193,1.193,0,0,1,1.194,1.191V21.959a1.193,1.193,0,0,1-1.194,1.191H3.194A1.192,1.192,0,0,1,2,21.959V10.041A1.192,1.192,0,0,1,3.194,8.85Z"
-                  style="fill: url(#a)"
-                />
-                <path
-                  d="M6.9,17.988c.023.184.039.344.046.481h.028c.01-.13.032-.287.065-.47s.062-.338.089-.465l1.255-5.407h1.624l1.3,5.326a7.761,7.761,0,0,1,.162,1h.022a7.6,7.6,0,0,1,.135-.975l1.039-5.358h1.477l-1.824,7.748H10.591L9.354,14.742q-.054-.222-.122-.578t-.084-.52H9.127q-.021.189-.084.561c-.042.249-.075.432-.1.552L7.78,19.871H6.024L4.19,12.127h1.5l1.131,5.418A4.469,4.469,0,0,1,6.9,17.988Z"
-                  style="fill: #fff"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M13.71 4.29l-3-3L10 1H4L3 2v12l1 1h9l1-1V5l-.29-.71zM13 14H4V2h5v4h4v8zm-3-9V2l3 3h-3z"
                 />
               </svg>
               <div class="sidebar-link-text hidden-sidebar">
-                MGT 400 Report.docx
-              </div>
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a class="sidebar-link">
-              <svg class="sidebar-icon" viewBox="0 0 56 56">
-                <g>
-                  <path
-                    style="fill: #e9e9e0"
-                    d="M36.985,0H7.963C7.155,0,6.5,0.655,6.5,1.926V55c0,0.345,0.655,1,1.463,1h40.074   c0.808,0,1.463-0.655,1.463-1V12.978c0-0.696-0.093-0.92-0.257-1.085L37.607,0.257C37.442,0.093,37.218,0,36.985,0z"
-                  />
-                  <polygon
-                    style="fill: #d9d7ca"
-                    points="37.5,0.151 37.5,12 49.349,12  "
-                  />
-                  <path
-                    style="fill: #cc4b4c"
-                    d="M19.514,33.324L19.514,33.324c-0.348,0-0.682-0.113-0.967-0.326   c-1.041-0.781-1.181-1.65-1.115-2.242c0.182-1.628,2.195-3.332,5.985-5.068c1.504-3.296,2.935-7.357,3.788-10.75   c-0.998-2.172-1.968-4.99-1.261-6.643c0.248-0.579,0.557-1.023,1.134-1.215c0.228-0.076,0.804-0.172,1.016-0.172   c0.504,0,0.947,0.649,1.261,1.049c0.295,0.376,0.964,1.173-0.373,6.802c1.348,2.784,3.258,5.62,5.088,7.562   c1.311-0.237,2.439-0.358,3.358-0.358c1.566,0,2.515,0.365,2.902,1.117c0.32,0.622,0.189,1.349-0.39,2.16   c-0.557,0.779-1.325,1.191-2.22,1.191c-1.216,0-2.632-0.768-4.211-2.285c-2.837,0.593-6.15,1.651-8.828,2.822   c-0.836,1.774-1.637,3.203-2.383,4.251C21.273,32.654,20.389,33.324,19.514,33.324z M22.176,28.198   c-2.137,1.201-3.008,2.188-3.071,2.744c-0.01,0.092-0.037,0.334,0.431,0.692C19.685,31.587,20.555,31.19,22.176,28.198z    M35.813,23.756c0.815,0.627,1.014,0.944,1.547,0.944c0.234,0,0.901-0.01,1.21-0.441c0.149-0.209,0.207-0.343,0.23-0.415   c-0.123-0.065-0.286-0.197-1.175-0.197C37.12,23.648,36.485,23.67,35.813,23.756z M28.343,17.174   c-0.715,2.474-1.659,5.145-2.674,7.564c2.09-0.811,4.362-1.519,6.496-2.02C30.815,21.15,29.466,19.192,28.343,17.174z    M27.736,8.712c-0.098,0.033-1.33,1.757,0.096,3.216C28.781,9.813,27.779,8.698,27.736,8.712z"
-                  />
-                  <path
-                    style="fill: #cc4b4c"
-                    d="M48.037,56H7.963C7.155,56,6.5,55.345,6.5,54.537V39h43v15.537C49.5,55.345,48.845,56,48.037,56z"
-                  />
-                  <g>
-                    <path
-                      style="fill: #ffffff"
-                      d="M17.385,53h-1.641V42.924h2.898c0.428,0,0.852,0.068,1.271,0.205    c0.419,0.137,0.795,0.342,1.128,0.615c0.333,0.273,0.602,0.604,0.807,0.991s0.308,0.822,0.308,1.306    c0,0.511-0.087,0.973-0.26,1.388c-0.173,0.415-0.415,0.764-0.725,1.046c-0.31,0.282-0.684,0.501-1.121,0.656    s-0.921,0.232-1.449,0.232h-1.217V53z M17.385,44.168v3.992h1.504c0.2,0,0.398-0.034,0.595-0.103    c0.196-0.068,0.376-0.18,0.54-0.335c0.164-0.155,0.296-0.371,0.396-0.649c0.1-0.278,0.15-0.622,0.15-1.032    c0-0.164-0.023-0.354-0.068-0.567c-0.046-0.214-0.139-0.419-0.28-0.615c-0.142-0.196-0.34-0.36-0.595-0.492    c-0.255-0.132-0.593-0.198-1.012-0.198H17.385z"
-                    />
-                    <path
-                      style="fill: #ffffff"
-                      d="M32.219,47.682c0,0.829-0.089,1.538-0.267,2.126s-0.403,1.08-0.677,1.477s-0.581,0.709-0.923,0.937    s-0.672,0.398-0.991,0.513c-0.319,0.114-0.611,0.187-0.875,0.219C28.222,52.984,28.026,53,27.898,53h-3.814V42.924h3.035    c0.848,0,1.593,0.135,2.235,0.403s1.176,0.627,1.6,1.073s0.74,0.955,0.95,1.524C32.114,46.494,32.219,47.08,32.219,47.682z     M27.352,51.797c1.112,0,1.914-0.355,2.406-1.066s0.738-1.741,0.738-3.09c0-0.419-0.05-0.834-0.15-1.244    c-0.101-0.41-0.294-0.781-0.581-1.114s-0.677-0.602-1.169-0.807s-1.13-0.308-1.914-0.308h-0.957v7.629H27.352z"
-                    />
-                    <path
-                      style="fill: #ffffff"
-                      d="M36.266,44.168v3.172h4.211v1.121h-4.211V53h-1.668V42.924H40.9v1.244H36.266z"
-                    />
-                  </g>
-                </g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-              </svg>
-              <div class="sidebar-link-text hidden-sidebar">
-                MGT 400 Report.pdf
+                {{ file.fileName }}
               </div>
             </a>
           </li>
@@ -274,9 +104,9 @@
       </div>
     </aside>
     <main class="content" id="content">
-      <article class="home">
+      <article class="home" id="home">
         <div class="btn-group">
-          <button class="app-button">
+          <button (click)="toggleApp('excel')" class="app-button">
             <svg class="app-button-icon" viewBox="0 0 32 32">
               <defs>
                 <linearGradient
@@ -335,7 +165,7 @@
             </svg>
             <p class="app-button-text">Spreadsheet</p>
           </button>
-          <button class="app-button">
+          <button (click)="toggleApp('word')" class="app-button">
             <svg class="app-button-icon" viewBox="0 0 32 32">
               <defs>
                 <linearGradient
@@ -398,7 +228,7 @@
           </button>
         </div>
         <div class="btn-group">
-          <button class="app-button">
+          <button (click)="toggleApp('pdf')" class="app-button">
             <svg class="app-button-icon" viewBox="0 0 56 56">
               <g>
                 <path
@@ -509,9 +339,9 @@
           </button>
         </div>
       </article>
-      <article *ngIf="false" id="excel">
+      <article class="app close" id="excel">
         <nav class="sub-nav">
-          <button class="sub-nav-btn">
+          <button (click)="reloadPage()" class="sub-nav-btn">
             <svg class="sub-nav-btn-icon" viewBox="0 0 486.975 486.975">
               <g>
                 <path
@@ -536,11 +366,46 @@
             </svg>
           </button>
         </nav>
-        <app-excel></app-excel>
+        <app-excel #excelComponent></app-excel>
       </article>
-      <article *ngIf="false" id="word">
+      <article class="app close" id="word">
         <nav class="sub-nav">
-          <button class="sub-nav-btn">
+          <button (click)="reloadPage()" class="sub-nav-btn">
+            <svg class="sub-nav-btn-icon" viewBox="0 0 486.975 486.975">
+              <g>
+                <path
+                  d="M473.475,230.025h-427.4l116-116c5.3-5.3,5.3-13.8,0-19.1c-5.3-5.3-13.8-5.3-19.1,0l-139,139c-5.3,5.3-5.3,13.8,0,19.1   l139,139c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1l-116-116h427.5c7.5,0,13.5-6,13.5-13.5   S480.975,230.025,473.475,230.025z"
+                />
+              </g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+            </svg>
+          </button>
+          <button
+            class="btn btn-success ml-4"
+            (click)="docComponent.saveResult()"
+          >
+            Save Changes
+          </button>
+        </nav>
+        <app-doc-editor #docComponent></app-doc-editor>
+      </article>
+      <article class="app close" id="pdf">
+        <nav class="sub-nav">
+          <button (click)="reloadPage()" class="sub-nav-btn">
             <svg class="sub-nav-btn-icon" viewBox="0 0 486.975 486.975">
               <g>
                 <path
@@ -565,38 +430,9 @@
             </svg>
           </button>
         </nav>
-        <app-doc-editor></app-doc-editor>
+        <app-pdf #pdfComponent></app-pdf>
       </article>
-      <article *ngIf="false" id="pdf">
-        <nav class="sub-nav">
-          <button class="sub-nav-btn">
-            <svg class="sub-nav-btn-icon" viewBox="0 0 486.975 486.975">
-              <g>
-                <path
-                  d="M473.475,230.025h-427.4l116-116c5.3-5.3,5.3-13.8,0-19.1c-5.3-5.3-13.8-5.3-19.1,0l-139,139c-5.3,5.3-5.3,13.8,0,19.1   l139,139c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1l-116-116h427.5c7.5,0,13.5-6,13.5-13.5   S480.975,230.025,473.475,230.025z"
-                />
-              </g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-              <g></g>
-            </svg>
-          </button>
-        </nav>
-        <app-pdf></app-pdf>
-      </article>
-      <article *ngIf="false" id="powerpoint">
+      <article class="close" id="powerpoint">
         <nav class="sub-nav">
           <button class="sub-nav-btn">
             <svg class="sub-nav-btn-icon" viewBox="0 0 486.975 486.975">

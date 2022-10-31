@@ -326,3 +326,18 @@ body {
   width: 20px;
   height: 20px;
 }
+
+.drive-icon {
+  fill: #444;
+  width: 40px;
+  width: 40px;
+  margin-right: 20px;
+}
+
+.close {
+  display: none;
+}
+
+.app {
+  height: calc(100vh - 56px);
+}

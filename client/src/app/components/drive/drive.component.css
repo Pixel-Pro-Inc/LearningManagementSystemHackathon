@@ -341,6 +341,7 @@ body {
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
+  min-height: 350px;
 }
 
 .files {
@@ -356,6 +357,24 @@ body {
   background-color: transparent;
   margin: 0.5rem auto;
   width: 350px;
+  height: fit-content;
+}
+
+@media screen and (max-width: 600px) {
+  .folder,
+  .file {
+    display: flex;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    border: 1px solid var(--light-gray);
+    background-color: transparent;
+    margin: 0.5rem auto;
+    width: 275px;
+  }
+}
+
+.folder {
+  justify-content: space-between;
 }
 
 .folder:hover {
@@ -375,6 +394,8 @@ body {
   margin-left: 0.35rem;
   white-space: nowrap;
   overflow: hidden;
+  cursor: pointer;
+  color: #444;
   text-overflow: ellipsis;
 }
 
@@ -407,4 +428,85 @@ body {
   fill: #444;
   width: 30px;
   height: 30px;
+}
+
+.column {
+  margin: 0 auto;
+}
+
+.column .folder:last-child {
+  margin-bottom: 0;
+}
+
+.column .file:last-child {
+  margin-bottom: 0;
+}
+
+.folder-start {
+  display: flex;
+}
+
+.modal-holder {
+  position: absolute;
+  width: 100vw;
+  height: calc(100vh - 56px);
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+.new-folder {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  min-height: 300px;
+  width: 300px;
+  box-shadow: 1px 1px 20px rgb(0, 0, 0, 0.1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--dark-color);
+  padding: 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.header-text {
+  display: flex;
+  color: #fff;
+  margin: auto 0;
+}
+
+.form-body {
+  padding: 1rem;
+}
+
+.chat-btn {
+  background-color: transparent;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  border: none;
+}
+
+.chat-btn.msg {
+  width: 35px;
+  margin: 0.25rem;
+}
+
+.chat-btn:hover {
+  background-color: rgb(255, 255, 255, 0.25);
+  border: none;
+}
+
+.chat-icon {
+  width: 15px;
+  height: 15px;
+  fill: #fff;
+}
+
+.close {
+  display: none;
 }
