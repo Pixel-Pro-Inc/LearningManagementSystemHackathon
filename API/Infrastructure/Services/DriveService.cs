@@ -141,12 +141,24 @@ namespace API.Infrastructure.Services
         {
             await _firebaseService.DeleteData("Folder/" + folder.Id);
 
+            //Delete all sub-folders
+            var folders = await GetFolders(folder.Owner);
+
+            var relevantFolders = folders.Where(_folder => _folder.Owner.OrganizationId == folder.Owner.OrganizationId).ToList();
+
+            relevantFolders = relevantFolders.Where(_folder => _folder.Directory == $"{folder.Directory}{folder.FolderName}/").ToList();
+
+            foreach (var _folder in relevantFolders)
+            {
+                await DeleteFolder(_folder);
+            }
+
             //Delete all files in the folder
             var files = await GetFiles(folder.Owner);
 
             var relevantFiles = files.Where(file => file.Owner.OrganizationId == folder.Owner.OrganizationId).ToList();
 
-            relevantFiles = relevantFiles.Where(file => file.Directory == $"{folder.Directory}/{folder.FolderName}").ToList();
+            relevantFiles = relevantFiles.Where(file => file.Directory == $"{folder.Directory}{folder.FolderName}/").ToList();
 
             foreach (var file in relevantFiles)
             {
