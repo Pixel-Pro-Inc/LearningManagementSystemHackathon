@@ -5,7 +5,8 @@
 
 nav {
   background-color: var(--dark-color);
-  height: 56px;
+  padding-bottom: 2px;
+  min-height: 56px;
 }
 .dropdown-content {
   display: none;

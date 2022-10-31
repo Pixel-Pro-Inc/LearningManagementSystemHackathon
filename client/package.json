@@ -26,9 +26,11 @@
     "bootstrap": "^4.5.3",
     "bootstrap-fileinput": "^5.5.2",
     "font-awesome": "^4.7.0",
+    "ng-multiselect-dropdown": "^1.0.0-beta.19",
     "ngx-bootstrap": "^7.1.2",
     "ngx-spinner": "^12.0.0",
     "ngx-toastr": "^14.3.0",
+    "pusher-js": "^7.4.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

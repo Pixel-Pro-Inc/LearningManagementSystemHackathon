@@ -31,4 +31,8 @@ export class NavComponent implements OnInit {
       this.sharedService.AccountTypes.Teacher
     );
   }
+
+  getUser() {
+    return this.sharedService.getUser();
+  }
 }

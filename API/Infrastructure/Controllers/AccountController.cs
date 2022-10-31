@@ -27,6 +27,7 @@ namespace API.Infrastructure.Controllers
                 return BadRequest("You already have an account");
             }
 
+            //[TODO:]Add Automated Img
             User appUser = new User()
             {
                 FirstNames = signUpDto.FirstNames,
@@ -39,14 +40,16 @@ namespace API.Infrastructure.Controllers
                 NationalIdentityNumber = signUpDto.NationalIdentityNumber,
                 Nationality = signUpDto.Nationality,
                 Organization = signUpDto.Organization,
+                AvatarUrl = "https://firebasestorage.googleapis.com/v0/b/learning-management-hackathon.appspot.com/o/576-5768680_avatar-png-icon-person-icon-png-free-transparent.png?alt=media&token=feac2b47-a5d1-4a25-b0de-af0e60652276",
                 PasswordSalt = hmac.Key,
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(signUpDto.Password))
             };
 
             await _firebaseService.StoreData<User>("Account", appUser);
 
-            return new UserDto() {
-                StudentId = appUser.OrganizationId,
+            return new UserDto()
+            {
+                OrganizationId = appUser.OrganizationId,
                 Email = appUser.Email,
                 AccountType = appUser.AccountType,
                 Disabled = appUser.Disabled,
@@ -54,7 +57,9 @@ namespace API.Infrastructure.Controllers
                 Languages = appUser.Languages,
                 LastName = appUser.LastName,
                 Organization = appUser.Organization,
-                Token= _tokenService.CreateToken(appUser),
+                Token = _tokenService.CreateToken(appUser),
+                AvatarUrl = appUser.AvatarUrl,
+                AvatarPublicId = appUser.AvatarPublicId
             };
         }
         [HttpPost("login")]
@@ -78,7 +83,7 @@ namespace API.Infrastructure.Controllers
             return new UserDto()
             {
                 Email = appUser.Email,
-                StudentId = appUser.OrganizationId,
+                OrganizationId = appUser.OrganizationId,
                 AccountType = appUser.AccountType,
                 Disabled = appUser.Disabled,
                 FirstNames = appUser.FirstNames,
@@ -86,6 +91,8 @@ namespace API.Infrastructure.Controllers
                 LastName = appUser.LastName,
                 Organization = appUser.Organization,
                 Token = _tokenService.CreateToken(appUser),
+                AvatarUrl = appUser.AvatarUrl,
+                AvatarPublicId = appUser.AvatarPublicId
             };
         }
         [Authorize]
@@ -94,20 +101,22 @@ namespace API.Infrastructure.Controllers
         {
             List<UserDto> userDtos = new List<UserDto>();
 
-            List<User> users = await _firebaseService.GetData<User>("Account");
+            List<User> users = await _accountService.GetUsers();
 
             foreach (var appUser in users)
             {
                 userDtos.Add(new UserDto()
                 {
                     Email = appUser.Email,
-                    StudentId = appUser.OrganizationId,
+                    OrganizationId = appUser.OrganizationId,
                     AccountType = appUser.AccountType,
                     Disabled = appUser.Disabled,
                     FirstNames = appUser.FirstNames,
                     Languages = appUser.Languages,
                     LastName = appUser.LastName,
-                    Organization = appUser.Organization
+                    Organization = appUser.Organization,
+                    AvatarUrl = appUser.AvatarUrl,
+                    AvatarPublicId = appUser.AvatarPublicId
                 });
             }
 
