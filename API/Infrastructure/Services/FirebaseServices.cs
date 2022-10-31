@@ -21,9 +21,18 @@ namespace API.Infrastructure.Services
 
             var result = await GetData<T>(path);
 
-            obj.Id = result.Count;
+            if(result.Count > 0)
+            {
+                string _str = JsonConvert.SerializeObject(result[result.Count - 1]);
+                dynamic _obj = JsonConvert.DeserializeObject(_str);
+                obj.Id = (int)_obj.Id + 1;
+            }
+            else
+            {
+                obj.Id = 0;
+            }            
 
-            await _firebaseServices.StoreData($"{path}/{result.Count}", obj);
+            await _firebaseServices.StoreData($"{path}/{obj.Id}", obj);
         }
         public Task DeleteData(string fullpath) => _firebaseServices.DeleteData(fullpath);
         public Task EditData(string fullpath, object thing) => _firebaseServices.EditData(fullpath, thing);

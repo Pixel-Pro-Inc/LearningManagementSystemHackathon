@@ -116,15 +116,20 @@
   position: relative;
 }
 
+.sidebar-icon-holder {
+  position: relative;
+}
 /*Unread Message Counter*/
-.sidebar-icon::before {
-  content: "1";
-  background-color: var(--dark-color);
+.sidebar-icon-notification {
+  background-color: orangered;
   color: #fff;
   border-radius: 50%;
-  padding: 1rem;
-  top: 0;
-  right: 0;
+  top: 0px;
+  left: 0px;
+  width: 15px;
+  height: 15px;
+  padding: 0.1rem;
+  font-size: 0.75rem;
   position: absolute;
 }
 /**/
@@ -383,8 +388,35 @@ h4 {
   margin-left: 1rem;
 }
 
+@media screen and (max-width: 600px) {
+  .messagebox-holder {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100vw;
+    height: calc(100vh - 56px);
+  }
+
+  .messagebox {
+    background-color: #292929;
+    box-shadow: 1px 1px 5px rgb(55, 55, 55, 0.1);
+    height: 100%;
+    width: 100%;
+    border-radius: 0.25rem 0.25rem 0 0;
+    margin-left: 0;
+  }
+}
+
 .chat-header {
   padding: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-header {
+  display: flex;
 }
 
 .chat-rule {

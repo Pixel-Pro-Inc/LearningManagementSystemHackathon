@@ -18,6 +18,8 @@ namespace API.Core.Entities
         public List<string> Languages { get; set; }
         public string OrganizationId { get; set; }
         public string Email { get; set; }
+        public string AvatarUrl { get; set; }
+        public string AvatarPublicId { get; set; }
 
         //Account Information
         public byte[] PasswordHash { get; set; }

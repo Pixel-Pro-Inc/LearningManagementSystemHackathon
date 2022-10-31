@@ -19,12 +19,18 @@ import { TeacherDashboardComponent } from './components/teacher-dashboard/teache
 import { MsgInputComponent } from './_forms/msg-input/msg-input.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { OfficeComponent } from './components/office/office.component';
-import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
+import {
+  ScheduleModule,
+  RecurrenceEditorModule,
+} from '@syncfusion/ej2-angular-schedule';
 import { DocEditorComponent } from './components/doc-editor/doc-editor.component';
 import { ExcelComponent } from './components/excel/excel.component';
 import { PdfComponent } from './components/pdf/pdf.component';
 import { PowerpointComponent } from './components/powerpoint/powerpoint.component';
-import { DocumentEditorModule, DocumentEditorContainerModule } from '@syncfusion/ej2-angular-documenteditor';
+import {
+  DocumentEditorModule,
+  DocumentEditorContainerModule,
+} from '@syncfusion/ej2-angular-documenteditor';
 import { SpreadsheetModule } from '@syncfusion/ej2-angular-spreadsheet';
 import { PdfViewerModule } from '@syncfusion/ej2-angular-pdfviewer';
 import { DriveComponent } from './components/drive/drive.component';
@@ -33,6 +39,9 @@ import { FilePreviewComponent } from './components/file-preview/file-preview.com
 import { AssignmentComponent } from './components/assignment/assignment.component';
 import { AssessmentComponent } from './components/assessment/assessment.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CourseStaffComponent } from './components/course-staff/course-staff.component';
+import { AssessmentTeacherComponent } from './components/assessment-teacher/assessment-teacher.component';
+import { AssignmentTeacherComponent } from './components/assignment-teacher/assignment-teacher.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +66,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     AssignmentComponent,
     AssessmentComponent,
     ProfileComponent,
+    CourseStaffComponent,
+    AssessmentTeacherComponent,
+    AssignmentTeacherComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +83,10 @@ import { ProfileComponent } from './components/profile/profile.component';
       positionClass: 'toast-bottom-right',
     }),
     RecurrenceEditorModule,
-    DocumentEditorModule, DocumentEditorContainerModule, SpreadsheetModule, PdfViewerModule,
+    DocumentEditorModule,
+    DocumentEditorContainerModule,
+    SpreadsheetModule,
+    PdfViewerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

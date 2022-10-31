@@ -8,19 +8,18 @@ namespace API.Core.Entities
     public class Message
     {
         public int Id { get; set; }
+        public string messageChannel { get; set; }
 
-        public int SenderId { get; set; }
-        public string SenderUsername { get; set; }
-        public User Sender { get; set; }
-        public int RecipientId { get; set; }
-        public string RecipientUsername { get; set; }
-        public User Recipient { get; set; }
+        public string senderId { get; set; }
+        public string senderUsername { get; set; }
+        public User sender { get; set; }
+        public List<string> recipientIds { get; set; }
+        public List<string> recipientUsernames { get; set; }
+        public List<User> recipients { get; set; }
 
-        public string Content { get; set; }
-        public DateTime? DateRead { get; set; }
-        public DateTime MessageSent { get; set; } = DateTime.Now;
-        public bool SenderDeleted { get; set; }
-        public bool RecipientDeleted { get; set; }
+        public string content { get; set; }
+        public DateTime dateRead { get; set; } = DateTime.Now;
+        public string messageSent { get; set; } = DateTime.Now.ToShortTimeString();
 
     }
 }
