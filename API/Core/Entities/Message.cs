@@ -19,7 +19,7 @@ namespace API.Core.Entities
 
         public string content { get; set; }
         public DateTime dateRead { get; set; } = DateTime.Now;
-        public string messageSent { get; set; } = DateTime.Now.ToShortTimeString();
+        public string messageSent { get; set; } = (DateTime.Now.AddHours(2)).ToShortTimeString();
 
     }
 }

@@ -14,7 +14,7 @@ namespace API.Application.DTO
 
         public string Content { get; set; }
         public DateTime? DateRead { get; set; } = new DateTime();
-        public string? MessageSent { get; set; } = DateTime.Now.ToShortTimeString();
+        public string? MessageSent { get; set; } = (DateTime.Now.AddHours(2)).ToShortTimeString();
 
     }
 }
