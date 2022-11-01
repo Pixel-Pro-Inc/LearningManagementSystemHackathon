@@ -38,10 +38,27 @@
     },
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchBrowser": false,
+      "launchUrl": "",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "Cloudinary_ApiKey": "438445869328724",
+        "Cloudinary_ApiSecret": "rzxsstlFDlcQj6DxhhHGyaRkjDM",
+        "Cloudinary_CloudName": "pixel-pro",
+        "Firebase_AuthSecret": "XOPkzP4NAXvbgPDesKvglnY4uRlpz12M0xeAgT2q",
+        "Firebase_BasePath": "https://learning-management-hackathon-default-rtdb.firebaseio.com/",
+        "NGenius_MerchantAPIKey": "",
+        "NGenius_MerchantOutletReference": "",
+        "NGenius_RealmName": "",
+        "NGenius_URL": "",
+        "ObfuscationTangle": "super secret unguessable key",
+        "QUOTAGUARDSTATIC_URL": "no test environment available",
+        "SendGrid": "no test environment available",
+        "TokenKey": "super secret unguessable key",
+        "twilio_accountSid": "no test environment available",
+        "twilio_apiKeySecret": "no test environment available",
+        "twilio_apiKeySid": "no test environment available",
+        "Firebase_Storage_Bucket": "learning-management-hackathon.appspot.com"
       }
     }
   }
