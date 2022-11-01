@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[973],{973:(c,o,n)=>{n.r(o),n.d(o,{OfficeModule:()=>a});var f=n(8583),u=n(8288),l=n(6883),s=n(2130),E=n(639);let a=(()=>{class _{}return _.\u0275fac=function(O){return new(O||_)},_.\u0275mod=E.oAB({type:_}),_.\u0275inj=E.cJS({imports:[[f.ez,u.yFy,u.VwK,s.EOE,l.xC]]}),_})()}}]);

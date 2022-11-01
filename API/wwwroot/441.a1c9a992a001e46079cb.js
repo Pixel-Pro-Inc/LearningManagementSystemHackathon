@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[441],{3441:(r,a,l)=>{l.r(a),l.d(a,{CalendarModule:()=>o});var d=l(8583),u=l(3625),e=l(639);let o=(()=>{class n{}return n.\u0275fac=function(c){return new(c||n)},n.\u0275mod=e.oAB({type:n}),n.\u0275inj=e.cJS({imports:[[d.ez,u.K7,u.S0]]}),n})()}}]);
