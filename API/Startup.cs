@@ -1,5 +1,6 @@
 using System.Globalization;
 using API.Application.Extensions;
+using CompressedStaticFiles;
 
 namespace API
 {
@@ -19,7 +20,8 @@ namespace API
             services.AddApplicationServices(_config);
 
             services.AddControllers();
-            services.AddCors();           
+            services.AddCors();
+            services.AddCompressedStaticFiles();
 
             services.AddIdentityServices(_config);
         }
@@ -48,7 +50,7 @@ namespace API
             app.UseAuthorization();
 
             app.UseDefaultFiles();
-            app.UseStaticFiles();
+            app.UseCompressedStaticFiles();//app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {

@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "bundle-report": "webpack-bundle-analyzer ../API/wwwroot/stats.json",
-    "build-compress": "ng build --configuration production && gzipper c ../API/wwwroot --include js,css,html --output-file-format [filename].[ext] ../API/wwwroot/compressed/",
+    "build-compress": "ng build --configuration production && gzipper c ../API/wwwroot --include js,css,html --output-file-format [filename].[ext].gz ../API/wwwroot/compressed/ --zopfli",
     "test": "ng test"
   },
   "private": true,
