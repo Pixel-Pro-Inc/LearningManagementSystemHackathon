@@ -1,7 +1,12 @@
-<ejs-spreadsheet
-  #spreadsheet
-  (created)="loadDoc()"
-  openUrl="https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open"
-  allowOpen="true"
->
-</ejs-spreadsheet>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top"></nav>
+<div class="excel">
+  <ejs-spreadsheet
+    #spreadsheet
+    height="657px"
+    style="display: block"
+    (created)="loadDoc()"
+    openUrl="https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open"
+    allowOpen="true"
+  >
+  </ejs-spreadsheet>
+</div>

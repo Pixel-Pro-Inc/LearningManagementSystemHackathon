@@ -1,6 +1,10 @@
-<div class="content-wrapper">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top"></nav>
+
+<div class="doc content-wrapper">
   <ejs-pdfviewer
     id="pdfViewer"
+    height="657px"
+    style="display: block"
     (created)="loadDoc()"
     [serviceUrl]="service"
     style="height: 640px; display: block"
